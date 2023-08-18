@@ -1,5 +1,5 @@
 {
-  "name": "sf-real-links",
+  "name": "segmentfault-real-links",
   "version": "0.0.1",
   "description": "将思否页面中的链接替换为真实地址",
   "main": "index.js",

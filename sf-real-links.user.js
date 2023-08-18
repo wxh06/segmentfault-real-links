@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         Segment Fault real links
-// @name:zh-CN   Segment Fault 思否真实链接
+// @name         SegmentFault real links
+// @name:zh-CN   SegmentFault 思否真实链接
 // @namespace    https://github.com/wxh06
 // @version      0.0.1
 // @description  去除思否网页中的外链跳转，并将其替换为真实地址
 // @author       汪心禾
 // @license      MIT
-// @supportURL   https://github.com/wxh06/sf-real-links/issues
+// @supportURL   https://github.com/wxh06/segmentfault-real-links/issues
 // @match        https://segmentfault.com/*
 // @icon         https://static.segmentfault.com/main_site_next/df1f59ce/favicon.ico
 // @grant        GM.xmlHttpRequest
