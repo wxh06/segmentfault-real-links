@@ -1,20 +1,20 @@
 // ==UserScript==
-// @name         Segment Fault real links
+// @name         Segment Fault 思否真实链接
 // @namespace    http://tampermonkey.net/
 // @version      0.0.1
-// @description  将思否页面中的链接替换为真实地址
+// @description  去除思否网页中的外链跳转，并将其替换为真实地址
 // @author       汪心禾
 // @match        https://segmentfault.com/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=segmentfault.com
+// @icon         https://static.segmentfault.com/main_site_next/df1f59ce/favicon.ico
 // @grant        GM.xmlHttpRequest
+// @connect      link.segmentfault.com
 // ==/UserScript==
 
 /// <reference types="greasemonkey" />
 
 "use strict";
 
-/** @param {IntersectionObserverEntry[]} entries  */
-function onIntersection(entries) {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       GM.xmlHttpRequest({
@@ -26,13 +26,12 @@ function onIntersection(entries) {
               .querySelector("[data-url]")
               .getAttribute("data-url"),
           );
+          observer.unobserve(entry.target);
         },
       });
     }
   });
-}
-
-const observer = new IntersectionObserver(onIntersection);
+});
 
 /** @param {Element} element */
 function observeAllLinks(element) {
