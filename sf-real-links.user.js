@@ -21,13 +21,20 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       GM.xmlHttpRequest({
+        method: "GET",
         url: entry.target.getAttribute("href"),
+        /** @param {GM.Response} response  */
         onload(response) {
+          let { responseXML } = response;
+          if (!responseXML) {
+            responseXML = new DOMParser().parseFromString(
+              response.responseText,
+              "text/html",
+            );
+          }
           entry.target.setAttribute(
             "href",
-            response.responseXML
-              .querySelector("[data-url]")
-              .getAttribute("data-url"),
+            responseXML.querySelector("[data-url]").getAttribute("data-url"),
           );
           observer.unobserve(entry.target);
         },
