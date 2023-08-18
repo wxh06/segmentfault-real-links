@@ -13,8 +13,6 @@
 // @connect      link.segmentfault.com
 // ==/UserScript==
 
-/// <reference types="greasemonkey" />
-
 "use strict";
 
 const observer = new IntersectionObserver((entries) => {
